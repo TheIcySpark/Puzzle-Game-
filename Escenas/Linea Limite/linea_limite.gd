@@ -1,0 +1,2 @@
+extends objeto_base
+
