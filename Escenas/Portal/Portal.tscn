@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 29.546, 40.7588 )
+
+[node name="Portal" type="Area2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Colision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

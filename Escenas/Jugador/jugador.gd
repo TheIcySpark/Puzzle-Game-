@@ -8,13 +8,13 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not tween.is_active():
-		if event.is_action("ui_arriba"):
+		if event.is_action_pressed("ui_arriba"):
 			_mover(Vector2.UP)
-		elif event.is_action("ui_derecha"):
+		elif event.is_action_pressed("ui_derecha"):
 			_mover(Vector2.RIGHT)
-		elif event.is_action("ui_abajo"):
+		elif event.is_action_pressed("ui_abajo"):
 			_mover(Vector2.DOWN)
-		elif event.is_action("ui_izquierda"):
+		elif event.is_action_pressed("ui_izquierda"):
 			_mover(Vector2.LEFT)
 
 

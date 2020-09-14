@@ -68,6 +68,17 @@ ui_rayo={
 "events": [  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="default"
+2d_physics/layer_2="jugador"
+2d_physics/layer_3="lineas_limite"
+2d_physics/layer_4="reflejantes_luz"
+2d_physics/layer_5="cerraduras"
+2d_physics/layer_6="portal_materializador"
+2d_physics/layer_7="portal_desmaterializador"
+2d_physics/layer_8="laser"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

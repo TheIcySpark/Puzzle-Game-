@@ -11,21 +11,68 @@ enum TipoCelda{
 
 func _animacion_mover(direccion: Vector2) -> void:
 	tween.interpolate_property(self , "position" , position,
-			 position + direccion * 128, 0.5 , Tween.TRANS_BACK)
+			 position + direccion * 128, 0.15 , Tween.TRANS_BACK)
 	tween.start()
 
 func _animacion_no_mover(direccion: Vector2) -> void:
 	tween.interpolate_property(self , "position" , position - direccion * 32,
-			 position, 0.5 , Tween.TRANS_BACK)
+			 position, 0.15 , Tween.TRANS_BACK)
 	tween.start()
 
 func _celda_obstaculo(direccion: Vector2) -> bool:
 	var celda: int  = grid.get_cellv(
 			grid.world_to_map(position + direccion * 128) )
-	return false
+	if celda == TipoCelda.OBSTACULO:
+		return true
+	else:
+		return false
 
-func _reaccion_objeto(objeto: Object) -> bool:
-	return true
+func _reaccion_objeto(objeto: Object , direccion: Vector2) -> bool:
+	var tipo_objeto = objeto.get("tipo_objeto")
+	if tipo_objeto == TipoObjeto.DESMATERIALIZADO_INVOVIL:
+		_animacion_no_mover(direccion)
+		return false
+	
+	elif (tipo_objeto == TipoObjeto.MATERIALIZADO_INMOVIL and
+	self.tipo_objeto == TipoObjeto.MATERIALIZADO_MOVIL):
+		
+		_animacion_no_mover(direccion)
+		return false
+	
+	elif (tipo_objeto == TipoObjeto.MATERIALIZADO_INMOVIL and
+	self.tipo_objeto == TipoObjeto.DESMATERIALIZADO_MOVIL):
+		
+		_animacion_mover(direccion)
+		return true
+	elif (tipo_objeto == TipoObjeto.MATERIALIZADO_MOVIL and
+	self.tipo_objeto == TipoObjeto.MATERIALIZADO_MOVIL):
+		
+		if objeto._mover(direccion):
+			_animacion_mover(direccion)
+			return true
+		
+	elif (tipo_objeto == TipoObjeto.DESMATERIALIZADO_MOVIL and
+	self.tipo_objeto == TipoObjeto.DESMATERIALIZADO_MOVIL):
+		
+		if objeto._mover(direccion):
+			_animacion_mover(direccion)
+			return true
+	
+	elif (tipo_objeto == TipoObjeto.DESMATERIALIZADO_MOVIL and
+	self.tipo_objeto == TipoObjeto.MATERIALIZADO_MOVIL):
+		
+		if objeto._mover(direccion):
+			_animacion_mover(direccion)
+			return true
+	
+	elif (tipo_objeto == TipoObjeto.MATERIALIZADO_MOVIL and
+	self.tipo_objeto == TipoObjeto.DESMATERIALIZADO_MOVIL):
+		
+		if objeto._mover(direccion):
+			_animacion_mover(direccion)
+			return true
+	_animacion_no_mover(direccion)
+	return false
 
 func _mover(direccion: Vector2) -> bool:
 	if _cambio_direccion(direccion):
@@ -35,8 +82,12 @@ func _mover(direccion: Vector2) -> bool:
 		return false
 	else:
 		var objeto: Object = ray_cast.get_collider()
-		
-	return true
+		if objeto == null:
+			_animacion_mover(direccion)
+			return true
+		else:
+			return _reaccion_objeto(objeto , direccion)
+	return false
 
 
 
