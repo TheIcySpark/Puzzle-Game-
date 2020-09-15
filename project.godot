@@ -10,18 +10,24 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody2D",
-"class": "objeto_base",
+"class": "objeto_interaccionable",
 "language": "GDScript",
-"path": "res://Escenas/Objetos Movibles/objeto_base.gd"
+"path": "res://Escenas/Objetos/objeto_interaccionable.gd"
 }, {
-"base": "objeto_base",
-"class": "objeto_movible",
+"base": "objeto_interaccionable",
+"class": "objeto_movil",
 "language": "GDScript",
-"path": "res://Escenas/Objetos Movibles/objeto_movible.gd"
+"path": "res://Escenas/Objetos/objeto_movil.gd"
+}, {
+"base": "Area2D",
+"class": "portal",
+"language": "GDScript",
+"path": "res://Escenas/Portal/portal.gd"
 } ]
 _global_script_class_icons={
-"objeto_base": "",
-"objeto_movible": ""
+"objeto_interaccionable": "",
+"objeto_movil": "",
+"portal": ""
 }
 
 [application]
@@ -35,7 +41,7 @@ config/icon="res://icon.png"
 window/size/width=1920
 window/size/height=1080
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 
 [input]
 
@@ -78,6 +84,8 @@ ui_rayo={
 2d_physics/layer_6="portal_materializador"
 2d_physics/layer_7="portal_desmaterializador"
 2d_physics/layer_8="laser"
+2d_physics/layer_9="tiles_pared"
+2d_physics/layer_10="Camara"
 
 [rendering]
 

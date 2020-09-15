@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Built in/Particles Material/colision_laser.tres" type="Material" id=1]
+[ext_resource path="res://Escenas/Laser/Particulas 1.png" type="Texture" id=2]
+
+[node name="Laser" type="RayCast2D"]
+cast_to = Vector2( 6000, 0 )
+collision_mask = 24
+
+[node name="ParticulasInicio" type="Particles2D" parent="."]
+amount = 3
+lifetime = 0.3
+process_material = ExtResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="ParticulasFin" type="Particles2D" parent="."]
+position = Vector2( 50, 0 )
+amount = 3
+lifetime = 0.3
+process_material = ExtResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="ParticulasLinea" type="Particles2D" parent="."]
+
+[node name="Linea" type="Line2D" parent="."]
+default_color = Color( 0.988235, 0.878431, 0, 1 )

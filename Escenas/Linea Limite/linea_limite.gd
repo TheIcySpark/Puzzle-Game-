@@ -1,2 +1,0 @@
-extends objeto_base
-

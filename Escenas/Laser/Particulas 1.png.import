@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Lineas 1.png-edd9b1bc43e642f390f8af494a1978e1.stex"
+path="res://.import/Particulas 1.png-28fef0520044fa68394ae593ee824cad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Lineas 1.png"
-dest_files=[ "res://.import/Lineas 1.png-edd9b1bc43e642f390f8af494a1978e1.stex" ]
+source_file="res://Escenas/Laser/Particulas 1.png"
+dest_files=[ "res://.import/Particulas 1.png-28fef0520044fa68394ae593ee824cad.stex" ]
 
 [params]
 
