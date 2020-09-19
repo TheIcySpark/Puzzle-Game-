@@ -4,7 +4,6 @@
 [ext_resource path="res://Escenas/Objetos/objeto_movil.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 64 )
 
 [node name="ObjetoMovil" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -16,4 +15,4 @@ shape = SubResource( 1 )
 
 [node name="RayCast" type="RayCast2D" parent="." index="3"]
 enabled = true
-cast_to = Vector2( 100, 0 )
+cast_to = Vector2( 130, 0 )

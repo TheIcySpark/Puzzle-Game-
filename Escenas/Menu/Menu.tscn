@@ -1,32 +1,201 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Fonts/zorque.ttf" type="DynamicFontData" id=1]
-
-[sub_resource type="DynamicFont" id=1]
-size = 48
-font_data = ExtResource( 1 )
-
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
+[ext_resource path="res://Built in/Theme/tema_principal.tres" type="Theme" id=1]
+[ext_resource path="res://Escenas/Menu/menu.gd" type="Script" id=2]
+[ext_resource path="res://Built in/Material/desmaterializado.tres" type="Material" id=3]
+[ext_resource path="res://Escenas/Menu/popup_how_to_play.gd" type="Script" id=4]
+[ext_resource path="res://Escenas/Menu/popup_theme.gd" type="Script" id=5]
+[ext_resource path="res://Imagenes/Theme.png" type="Texture" id=6]
+[ext_resource path="res://Escenas/Menu/popup_wild_card.gd" type="Script" id=7]
+[ext_resource path="res://Imagenes/WildCard Hud - Less.png" type="Texture" id=8]
+[ext_resource path="res://Escenas/Menu/boton_exit.gd" type="Script" id=9]
+[ext_resource path="res://Imagenes/wallpaper.png" type="Texture" id=10]
+[ext_resource path="res://Escenas/Menu/Popup_niveles.gd" type="Script" id=11]
+[ext_resource path="res://Escenas/Menu/boton_seleccion_nivel.gd" type="Script" id=12]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 2 )
+rect_min_size = Vector2( 128, 128 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BotonJugar" type="Button" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+material = ExtResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Opciones" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -111.0
-margin_top = -41.5
-margin_right = 111.0
-margin_bottom = 41.5
-text = "Jugar"
+margin_left = 320.0
+margin_top = -284.0
+margin_right = 647.0
+margin_bottom = 372.0
+rect_min_size = Vector2( 128, 128 )
+alignment = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BotonHowToPlay" type="Button" parent="Opciones"]
+margin_right = 327.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+text = "How to play"
+
+[node name="PopupHowToPlay" type="AcceptDialog" parent="Opciones/BotonHowToPlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -576.0
+margin_top = -148.0
+margin_right = 577.0
+margin_bottom = 748.0
+window_title = "¡Alerta!"
+script = ExtResource( 4 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Opciones/BotonHowToPlay/PopupHowToPlay"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 1145.0
+margin_bottom = 816.0
+text = "WASD or arrow keys for movement
+Key p or esc for pause
+key E or ENTER for ..... 
+the rest you will discover for yourself"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BotonTheme" type="Button" parent="Opciones"]
+margin_top = 132.0
+margin_right = 327.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 128, 128 )
+text = "Theme"
+
+[node name="PopupTheme" type="AcceptDialog" parent="Opciones/BotonTheme"]
+margin_right = 256.0
+margin_bottom = 146.0
+window_title = "¡Alerta!"
+script = ExtResource( 5 )
+
+[node name="ThemeImage" type="TextureRect" parent="Opciones/BotonTheme/PopupTheme"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 708.0
+margin_bottom = 208.0
+texture = ExtResource( 6 )
+stretch_mode = 5
+
+[node name="BotonWildCard" type="Button" parent="Opciones"]
+margin_top = 264.0
+margin_right = 327.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 128, 128 )
+text = "Wild card"
+
+[node name="PopupWildCard" type="AcceptDialog" parent="Opciones/BotonWildCard"]
+margin_right = 256.0
+margin_bottom = 146.0
+window_title = "¡Alerta!"
+script = ExtResource( 7 )
+
+[node name="WildCardImage" type="TextureRect" parent="Opciones/BotonWildCard/PopupWildCard"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 248.0
+margin_bottom = 66.0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="BotonJugar" type="Button" parent="Opciones"]
+margin_top = 396.0
+margin_right = 327.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 128, 128 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupNiveles" type="AcceptDialog" parent="Opciones/BotonJugar"]
+margin_right = 256.0
+margin_bottom = 146.0
+window_title = "¡Alerta!"
+script = ExtResource( 11 )
+
+[node name="ListaNiveles" type="GridContainer" parent="Opciones/BotonJugar/PopupNiveles"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -298.0
+margin_right = 120.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 128, 128 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Button" parent="Opciones/BotonJugar/PopupNiveles/ListaNiveles"]
+margin_right = 30.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 128 )
+text = "1"
+script = ExtResource( 12 )
+nivel_ruta = "res://Escenas/Niveles/Nivel1.tscn"
+
+[node name="2" type="Button" parent="Opciones/BotonJugar/PopupNiveles/ListaNiveles"]
+margin_right = 30.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 128 )
+text = "2"
+script = ExtResource( 12 )
+nivel_ruta = "res://Escenas/Niveles/Nivel2.tscn"
+
+[node name="3" type="Button" parent="Opciones/BotonJugar/PopupNiveles/ListaNiveles"]
+margin_right = 30.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 128 )
+text = "3"
+script = ExtResource( 12 )
+nivel_ruta = "res://Escenas/Niveles/Nivel3.tscn"
+
+[node name="4" type="Button" parent="Opciones/BotonJugar/PopupNiveles/ListaNiveles"]
+margin_right = 30.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 128 )
+text = "4"
+script = ExtResource( 12 )
+nivel_ruta = "res://Escenas/Niveles/Nivel4.tscn"
+
+[node name="BotonExit" type="Button" parent="Opciones"]
+margin_top = 528.0
+margin_right = 327.0
+margin_bottom = 656.0
+rect_min_size = Vector2( 128, 128 )
+text = "Exit"
+script = ExtResource( 9 )
+[connection signal="button_down" from="Opciones/BotonHowToPlay" to="Opciones/BotonHowToPlay/PopupHowToPlay" method="_on_BotonHowToPlay_button_down"]
+[connection signal="button_down" from="Opciones/BotonTheme" to="Opciones/BotonTheme/PopupTheme" method="_on_BotonTheme_button_down"]
+[connection signal="button_down" from="Opciones/BotonWildCard" to="Opciones/BotonWildCard/PopupWildCard" method="_on_BotonWildCard_button_down"]
+[connection signal="button_down" from="Opciones/BotonJugar" to="Opciones/BotonJugar/PopupNiveles" method="_on_BotonJugar_button_down"]
+[connection signal="button_down" from="Opciones/BotonExit" to="Opciones/BotonExit" method="_on_BotonExit_button_down"]

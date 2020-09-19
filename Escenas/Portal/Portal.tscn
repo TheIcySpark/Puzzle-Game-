@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Escenas/Portal/portal.gd" type="Script" id=1]
+[ext_resource path="res://Built in/Material/desmaterializado.tres" type="Material" id=2]
+[ext_resource path="res://Built in/Material/materializado.tres" type="Material" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Rotacion"
 length = 5.0
 loop = true
@@ -19,7 +21,7 @@ tracks/0/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 29.546, 40.7588 )
 
 [node name="Portal" type="Area2D"]
@@ -27,11 +29,13 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+material_desmaterializado = ExtResource( 2 )
+material_materializado = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
 [node name="Animacion" type="AnimationPlayer" parent="Sprite"]
-anims/Rotacion = SubResource( 2 )
+anims/Rotacion = SubResource( 1 )
 
 [node name="Colision" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )

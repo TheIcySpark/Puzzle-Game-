@@ -1,5 +1,6 @@
 extends objeto_movil
-export var material_desmaterializar: Material 
+
+onready var disparador_laser: Node = $DisparadorLaser
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not tween.is_active():
@@ -11,6 +12,19 @@ func _unhandled_input(event: InputEvent) -> void:
 			mover(Vector2.DOWN)
 		elif event.is_action_pressed("ui_izquierda"):
 			mover(Vector2.LEFT)
+	if event.is_action_pressed("ui_disparar_laser"):
+		if disparador_laser.get_child_count() > 1:
+			disparador_laser.detener_disparo()
+		else:
+			if tipo_objeto == TipoObjeto.MATERIALIZADO:
+				disparador_laser.disparar(
+						disparador_laser.TipoLaser.MATERIALIZADO , 
+						position , rotation)
+			elif tipo_objeto == TipoObjeto.DESMATERIALIZADO:
+				disparador_laser.disparar(
+						disparador_laser.TipoLaser.DESMATERIALIZADO , 
+						position , rotation)
+
 
 func _cambiar_mascara_colisiones(valor: bool) -> void:
 	ray_cast.set_collision_mask_bit(2 , valor)
@@ -18,12 +32,14 @@ func _cambiar_mascara_colisiones(valor: bool) -> void:
 
 func _materializar() -> void:
 	_cambiar_mascara_colisiones(true)
-	material = null
+	material = material_materializado
+	tipo_objeto = TipoObjeto.MATERIALIZADO
 
 
 func _desmaterializar() -> void:
 	_cambiar_mascara_colisiones(false)
 	material = material_desmaterializar
+	tipo_objeto = TipoObjeto.DESMATERIALIZADO
 
 
 

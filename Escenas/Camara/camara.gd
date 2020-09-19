@@ -6,7 +6,6 @@ export var movimiento_x: int
 export var movimiento_y: int
 
 func _mover_camara(direccion: Vector2) -> void:
-	print(direccion)
 	if direccion.x != 0:
 		tween.interpolate_property(self, "position", position, 
 				position + direccion * movimiento_x , 0.5 , Tween.TRANS_LINEAR)

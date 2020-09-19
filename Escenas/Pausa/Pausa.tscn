@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Built in/Theme/tema_principal.tres" type="Theme" id=1]
+[ext_resource path="res://Escenas/Pausa/boton_recargar_nivel.gd" type="Script" id=2]
+[ext_resource path="res://Escenas/Pausa/boton_continuar.gd" type="Script" id=3]
+[ext_resource path="res://Escenas/Pausa/boton_salir.gd" type="Script" id=4]
+[ext_resource path="res://Escenas/Pausa/pausa.gd" type="Script" id=5]
+
+[node name="Pausa" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Opciones" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -100.0
+margin_right = 180.0
+margin_bottom = 100.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotonRecargarNivel" type="Button" parent="Opciones"]
+margin_right = 360.0
+margin_bottom = 64.0
+text = "Reload Level"
+script = ExtResource( 2 )
+
+[node name="BotonContinuar" type="Button" parent="Opciones"]
+margin_top = 68.0
+margin_right = 360.0
+margin_bottom = 132.0
+text = "Continue"
+script = ExtResource( 3 )
+pausa_ruta = NodePath("../..")
+
+[node name="BotonSalir" type="Button" parent="Opciones"]
+margin_top = 136.0
+margin_right = 360.0
+margin_bottom = 200.0
+text = "Exit"
+script = ExtResource( 4 )
+menu_ruta = "res://Escenas/Menu/Menu.tscn"
+[connection signal="button_down" from="Opciones/BotonRecargarNivel" to="Opciones/BotonRecargarNivel" method="_on_BotonRecargarNivel_button_down"]
+[connection signal="button_down" from="Opciones/BotonContinuar" to="Opciones/BotonContinuar" method="_on_BotonContinuar_button_down"]
+[connection signal="button_down" from="Opciones/BotonSalir" to="Opciones/BotonSalir" method="_on_BotonSalir_button_down"]

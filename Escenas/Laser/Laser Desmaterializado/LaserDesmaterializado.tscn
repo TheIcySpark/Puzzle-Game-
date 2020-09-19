@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Escenas/Laser/Laser.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Escenas/Laser/Laser Desmaterializado/laser_desmaterializado.gd" type="Script" id=2]
+[ext_resource path="res://Built in/Material/materializado.tres" type="Material" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.989796 )
+colors = PoolColorArray( 0.679321, 0.820313, 0, 1, 0, 0.90625, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.983471, 0.521591 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[node name="LaserDesmaterializado" instance=ExtResource( 1 )]
+material = ExtResource( 3 )
+collide_with_areas = false
+script = ExtResource( 2 )
+
+[node name="ParticulasInicio" parent="." index="0"]
+process_material = SubResource( 5 )
+
+[node name="ParticulasFin" parent="." index="1"]
+process_material = SubResource( 5 )
+
+[node name="Linea" parent="." index="2"]
+self_modulate = Color( 1.2, 1.2, 1, 1 )
+default_color = Color( 0.866667, 0.87451, 0.0117647, 1 )

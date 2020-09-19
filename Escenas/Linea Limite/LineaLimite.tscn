@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Escenas/Objetos/ObjetoInteraccionable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Escenas/Linea Limite/Lineas 1.png" type="Texture" id=2]
+[ext_resource path="res://Built in/Material/materializado.tres" type="Material" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 256, 64 )
 
 [node name="LineaLimite" instance=ExtResource( 1 )]
+modulate = Color( 1.5, 1, 1, 1 )
+material = ExtResource( 3 )
 collision_layer = 4
 collision_mask = 0
 
@@ -14,4 +17,5 @@ collision_mask = 0
 shape = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
+use_parent_material = true
 texture = ExtResource( 2 )

@@ -1,10 +1,14 @@
 class_name objeto_movil
 extends objeto_interaccionable
 
+export var material_desmaterializar: Material
+export var material_materializado: Material
+
 onready var tween: Tween = $Tween
 onready var ray_cast: RayCast2D = $RayCast
 
-func mover(direccion: Vector2) -> bool:
+func mover(direccion: Vector2 ,
+tipo_objeto_empuje: int = tipo_objeto) -> bool:
 	if _cambio_direccion(direccion):
 		return false
 	else:
@@ -26,19 +30,19 @@ func _cambio_direccion(direccion: Vector2) -> bool:
 
 func _animacion_mover(direccion: Vector2) -> void:
 	tween.interpolate_property(self , "position" , position,
-			 position + direccion * 128, 0.15 , Tween.TRANS_BACK)
+			 position + direccion * 128, 0.1 , Tween.TRANS_BACK)
 	tween.start()
 
 
 func _animacion_no_mover(direccion: Vector2) -> void:
 	tween.interpolate_property(self , "position" , position - direccion * 32,
-			 position, 0.15 , Tween.TRANS_BACK)
+			 position, 0.1 , Tween.TRANS_BACK)
 	tween.start()
 
 
 func _reaccion_objeto(objeto: Object , direccion: Vector2) -> bool:
 	if objeto.has_method("mover"):
-		if objeto.mover(direccion):
+		if objeto.mover(direccion , tipo_objeto):
 			_animacion_mover(direccion)
 			return true
 		else:
@@ -49,6 +53,11 @@ func _reaccion_objeto(objeto: Object , direccion: Vector2) -> bool:
 		return false
 
 
+func _materializar() -> void:
+	pass
 
+
+func _desmaterializar() -> void:
+	pass
 
 

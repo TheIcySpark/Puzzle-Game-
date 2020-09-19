@@ -1,0 +1,28 @@
+[gd_resource type="VisualShader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_add;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Output:0
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -871, 288 )
+mode = 1
+modes/blend = 1
+flags/light_only = false

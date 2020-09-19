@@ -1,18 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Escenas/Objetos/ObjetoMovil.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Escenas/Jugador/jugador.gd" type="Script" id=2]
 [ext_resource path="res://Escenas/Jugador/Triangulo 2.png" type="Texture" id=3]
-[ext_resource path="res://Built in/Material/desmaterializadorl.tres" type="Material" id=4]
+[ext_resource path="res://Built in/Material/desmaterializado.tres" type="Material" id=4]
+[ext_resource path="res://Built in/Material/materializado.tres" type="Material" id=5]
+[ext_resource path="res://Escenas/Laser/DisparadorLaser.tscn" type="PackedScene" id=6]
 
 [node name="Jugador" instance=ExtResource( 1 )]
+material = ExtResource( 5 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 2 )
 material_desmaterializar = ExtResource( 4 )
-
-[node name="Colision" parent="." index="0"]
-visible = false
+material_materializado = ExtResource( 5 )
 
 [node name="Sprite" parent="." index="1"]
 use_parent_material = true
@@ -20,3 +21,5 @@ texture = ExtResource( 3 )
 
 [node name="RayCast" parent="." index="3"]
 collision_mask = 284
+
+[node name="DisparadorLaser" parent="." index="4" instance=ExtResource( 6 )]
