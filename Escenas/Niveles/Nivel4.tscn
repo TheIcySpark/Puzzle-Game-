@@ -30,4 +30,4 @@ environment = ExtResource( 3 )
 
 [node name="Cerradura" parent="Cerradura" index="0"]
 position = Vector2( 3392, 1728 )
-siguiente_escena = "res://Escenas/Menu/Menu.tscn"
+siguiente_escena = "res://Escenas/Niveles/Nivel5.tscn"

@@ -74,8 +74,9 @@ margin_right = 1145.0
 margin_bottom = 816.0
 text = "WASD or arrow keys for movement
 Key p or esc for pause
-key E or ENTER for ..... 
-the rest you will discover for yourself"
+key E or ENTER for laser 
+green and blue spirals change your properties
+To pass the level, shoot the blue circle"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -147,9 +148,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -120.0
-margin_top = -298.0
+margin_top = -364.0
 margin_right = 120.0
-margin_bottom = 226.0
+margin_bottom = 292.0
 rect_min_size = Vector2( 128, 128 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -186,6 +187,14 @@ rect_min_size = Vector2( 128, 128 )
 text = "4"
 script = ExtResource( 12 )
 nivel_ruta = "res://Escenas/Niveles/Nivel4.tscn"
+
+[node name="5" type="Button" parent="Opciones/BotonJugar/PopupNiveles/ListaNiveles"]
+margin_right = 30.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 128 )
+text = "5"
+script = ExtResource( 12 )
+nivel_ruta = "res://Escenas/Niveles/Nivel5.tscn"
 
 [node name="BotonExit" type="Button" parent="Opciones"]
 margin_top = 528.0
